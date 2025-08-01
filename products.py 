@@ -1,0 +1,14 @@
+Valencia Walker's for Jewel.technology
+
+
+from flask import Blueprint, jsonify
+import json
+import os
+
+products_bp = Blueprint('products', __name__)
+
+@products_bp.route('/api/products')
+def products():
+    with open('data/jewelry.json', 'r') as f:
+        products = json.load(f)
+    return jsonify(products)

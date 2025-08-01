@@ -1,0 +1,33 @@
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!form.checkValidity()) {
+    form.classList.add('was-validated');
+    return;
+  }
+
+  const data = {
+    firstName: form.firstName.value,
+    lastName: form.lastName.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    address: form.address.value,
+    password: form.password.value
+  };
+
+  try {
+    const response = await fetch('/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+
+    if (!response.ok) throw new Error(result.error || 'Signup failed');
+
+    alert(result.message);
+    form.reset();
+    form.classList.remove('was-validated');
+  } catch (error) {
+    alert(`Error: ${error.message}`);
+  }
+});

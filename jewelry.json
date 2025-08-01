@@ -1,0 +1,164 @@
+[
+  {
+    "name": "Jewelry Item 1",
+    "category": "necklace",
+    "price": "$1000",
+    "image": "images/istockphoto-1201150101-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 2",
+    "category": "bracelet",
+    "price": "$1100",
+    "image": "images/istockphoto-1212890394-640x640.jpg"
+  },
+  {
+    "name": "Jewelry Item 3",
+    "category": "earrings",
+    "price": "$1200",
+    "image": "images/istockphoto-1283819435-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 4",
+    "category": "ring",
+    "price": "$1300",
+    "image": "images/istockphoto-1294831501-612x612-1.jpg"
+  },
+  {
+    "name": "Jewelry Item 5",
+    "category": "brooch",
+    "price": "$1400",
+    "image": "images/istockphoto-1294831501-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 6",
+    "category": "charm",
+    "price": "$1500",
+    "image": "images/istockphoto-1301151508-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 7",
+    "category": "necklace",
+    "price": "$1600",
+    "image": "images/istockphoto-1327105704-640x640.jpg"
+  },
+  {
+    "name": "Jewelry Item 8",
+    "category": "bracelet",
+    "price": "$1700",
+    "image": "images/istockphoto-1338646661-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 9",
+    "category": "earrings",
+    "price": "$1800",
+    "image": "images/istockphoto-1339948019-640x640.jpg"
+  },
+  {
+    "name": "Jewelry Item 10",
+    "category": "ring",
+    "price": "$1900",
+    "image": "images/istockphoto-1357417259-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 11",
+    "category": "brooch",
+    "price": "$2000",
+    "image": "images/istockphoto-1364767820-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 12",
+    "category": "charm",
+    "price": "$2100",
+    "image": "images/istockphoto-1385921358-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 13",
+    "category": "necklace",
+    "price": "$2200",
+    "image": "images/istockphoto-1387702971-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 14",
+    "category": "bracelet",
+    "price": "$2300",
+    "image": "images/istockphoto-1397823124-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 15",
+    "category": "earrings",
+    "price": "$2400",
+    "image": "images/istockphoto-1434115118-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 16",
+    "category": "ring",
+    "price": "$2500",
+    "image": "images/istockphoto-1471847107-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 17",
+    "category": "brooch",
+    "price": "$2600",
+    "image": "images/istockphoto-1472395941-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 18",
+    "category": "charm",
+    "price": "$2700",
+    "image": "images/istockphoto-1511923612-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 19",
+    "category": "necklace",
+    "price": "$2800",
+    "image": "images/istockphoto-1569177579-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 20",
+    "category": "bracelet",
+    "price": "$2900",
+    "image": "images/istockphoto-1677019735-640x640.jpg"
+  },
+  {
+    "name": "Jewelry Item 21",
+    "category": "earrings",
+    "price": "$3000",
+    "image": "images/istockphoto-1868103817-640x640.jpg"
+  },
+  {
+    "name": "Jewelry Item 22",
+    "category": "ring",
+    "price": "$3100",
+    "image": "images/istockphoto-2077212392-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 23",
+    "category": "brooch",
+    "price": "$3200",
+    "image": "images/istockphoto-2120409119-640x640-1.jpg"
+  },
+  {
+    "name": "Jewelry Item 24",
+    "category": "charm",
+    "price": "$3300",
+    "image": "images/istockphoto-2120409119-640x640.jpg"
+  },
+  {
+    "name": "Jewelry Item 25",
+    "category": "necklace",
+    "price": "$3400",
+    "image": "images/istockphoto-2163593194-612x612.jpg"
+  },
+  {
+    "name": "Jewelry Item 26",
+    "category": "bracelet",
+    "price": "$3500",
+    "image": "images/photo-149036753photo-1522312346375-d1a52e2b99b3.avif2201-b9bc1dc483f6.avif"
+  },
+  {
+    "name": "Jewelry Item 27",
+    "category": "earrings",
+    "price": "$3600",
+    "image": "images/photo-1507525428034-b723cf961d3e.avif"
+  }
+]

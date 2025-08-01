@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jewelry Technology | Fine Jewelry Collection</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  
+  <!-- Three.js and GLTF Loader for 3D viewer -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
+
+  <!-- QRCode.js for barcode generation -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+  <!-- model-viewer for AR view -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    /* Styles for virtual try-on */
+    #camera-container {
+      position: relative;
+      max-width: 400px;
+      margin: 1rem auto;
+    }
+    #videoElement {
+      width: 100%;
+      border-radius: 12px;
+      border: 2px solid #e2c9ac;
+      background: #000;
+    }
+    #overlay-jewelry {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      width: 150px;
+      opacity: 0.8;
+      user-select: none;
+    }
+    /* Signup form styling */
+    #signup-form {
+      max-width: 400px;
+      margin: 2rem auto 4rem;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #e2c9ac;
+    }
+  </style>
+</head>
+<body class="bg-dark text-light">
+
+  <header class="py-4 mb-5 border-bottom border-secondary">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold">Jewelry Technology</h1>
+      <p class="lead text-muted fst-italic">Fine Jewelry & Timeless Design</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Virtual Try-On Section -->
+    <section class="mb-5 text-center">
+      <h2 class="mb-4">Try Jewelry Virtually</h2>
+      <div id="camera-container">
+        <video id="videoElement" autoplay playsinline></video>
+        <img id="overlay-jewelry" src="{{ url_for('static', filename='images/necklace_gold_diamond.png') }}" alt="Try-on Jewelry Overlay" />
+      </div>
+      <p class="mt-3 fst-italic text-muted">Allow camera access to virtually try on jewelry.</p>
+      <select id="jewelry-select" class="form-select w-50 mx-auto" aria-label="Select jewelry to try on">
+        <option value="{{ url_for('static', filename='images/necklace_gold_diamond.png') }}" selected>Gold Diamond Necklace</option>
+        <option value="{{ url_for('static', filename='images/necklace_pearl.png') }}">Pearl Necklace</option>
+        <option value="{{ url_for('static', filename='images/bracelet_gold.png') }}">Gold Bangle Bracelet</option>
+        <option value="{{ url_for('static', filename='images/bracelet_diamond.png') }}">Diamond Tennis Bracelet</option>
+        <option value="{{ url_for('static', filename='images/earrings_silver.png') }}">Silver Earrings</option>
+        <option value="{{ url_for('static', filename='images/ring_gold_diamond.png') }}">Gold Diamond Ring</option>
+      </select>
+    </section>
+
+    <!-- Existing Necklaces Section -->
+    <section class="mb-5 text-center">
+      <h2 class="mb-4">Fine Jewelry Necklaces</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-sm-6 col-md-4 col-lg-3 position-relative">
+          <div class="card shadow-sm h-100">
+            <img src="{{ url_for('static', filename='images/necklace_gold_diamond.jpg') }}" class="card-img-top" alt="Gold Diamond Necklace" />
+            <div class="card-body">
+              <h5 class="card-title">Gold Diamond Necklace</h5>
+              <p class="card-text">18k Yellow Gold with VVS Diamonds, 16 inch</p>
+              <p class="fw-bold">$5,200</p>
+              <button class="btn btn-outline-warning w-100 mb-2">Add to Cart</button>
+              <div class="text-center" id="qrcode1"></div>
+              <model-viewer
+                src="{{ url_for('static', filename='assets/3d/sample_jewel.glb') }}"
+                alt="3D model of Gold Diamond Necklace"
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                environment-image="neutral"
+                auto-rotate
+                camera-controls
+                style="width: 100%; height: 300px; margin-top: 15px; border-radius: 12px;"
+              ></model-viewer>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3 position-relative">
+          <div class="card shadow-sm h-100">
+            <img src="{{ url_for('static', filename='images/necklace_pearl.jpg') }}" class="card-img-top" alt="Pearl Necklace" />
+            <div class="card-body">
+              <h5 class="card-title">Classic Pearl Strand</h5>
+              <p class="card-text">AAA Quality South Sea Pearls, 18 inch</p>
+              <p class="fw-bold">$2,850</p>
+              <button class="btn btn-outline-warning w-100 mb-2">Add to Cart</button>
+              <div class="text-center" id="qrcode2"></div>
+              <model-viewer
+                src="{{ url_for('static', filename='assets/3d/pearl_necklace.glb') }}"
+                alt="3D model of Pearl Necklace"
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                environment-image="neutral"
+                auto-rotate
+                camera-controls
+                style="width: 100%; height: 300px; margin-top: 15px; border-radius: 12px;"
+              ></model-viewer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Existing Bracelets Section -->
+    <section class="mb-5 text-center">
+      <h2 class="mb-4">Elegant Bracelets</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-sm-6 col-md-4 col-lg-3 position-relative">
+          <div class="card shadow-sm h-100">
+            <img src="{{ url_for('static', filename='images/bracelet_gold.jpg') }}" class="card-img-top" alt="Gold Bangle Bracelet" />
+            <div class="card-body">
+              <h5 class="card-title">Gold Bangle Bracelet</h5>
+              <p class="card-text">14k Solid Gold with High Polish Finish</p>
+              <p class="fw-bold">$1,600</p>
+              <button class="btn btn-outline-warning w-100 mb-2">Add to Cart</button>
+              <div class="text-center" id="qrcode3"></div>
+              <model-viewer
+                src="{{ url_for('static', filename='assets/3d/gold_bangle.glb') }}"
+                alt="3D model of Gold Bangle Bracelet"
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                environment-image="neutral"
+                auto-rotate
+                camera-controls
+                style="width: 100%; height: 300px; margin-top: 15px; border-radius: 12px;"
+              ></model-viewer>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-3 position-relative">
+          <div class="card shadow-sm h-100">
+            <img src="{{ url_for('static', filename='images/bracelet_diamond.jpg') }}" class="card-img-top" alt="Diamond Tennis Bracelet" />
+            <div class="card-body">
+              <h5 class="card-title">Diamond Tennis Bracelet</h5>
+              <p class="card-text">White Gold, 3 Carat Total Diamond Weight</p>
+              <p class="fw-bold">$4,900</p>
+              <button class="btn btn-outline-warning w-100 mb-2">Add to Cart</button>
+              <div class="text-center" id="qrcode4"></div>
+              <model-viewer
+                src="{{ url_for('static', filename='assets/3d/diamond_tennis_bracelet.glb') }}"
+                alt="3D model of Diamond Tennis Bracelet"
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                environment-image="neutral"
+                auto-rotate
+                camera-controls
+                style="width: 100%; height: 300px; margin-top: 15px; border-radius: 12px;"
+              ></model-viewer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signup Form Section -->
+    <section id="signup" class="mb-5">
+      <h2 class="mb-4 text-center">Create Your Account</h2>
+      <form id="signup-form" class="mx-auto" novalidate>
+        <div class="mb-3">
+          <label for="firstName" class="form-label">First Name *</label>
+          <input type="text" class="form-control" id="firstName" required />
+          <div class="invalid-feedback">Please enter your first name.</div>
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name *</label>
+          <input type="text" class="form-control" id="lastName" required />
+          <div class="invalid-feedback">Please enter your last name.</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address *</label>
+          <input type="email" class="form-control" id="email" required />
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number *</label>
+          <input type="tel" class="form-control" id="phone" required pattern="[0-9]{10,15}" />
+          <div class="invalid-feedback">Please enter a valid phone number.</div>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address *</label>
+          <input type="text" class="form-control" id="address" required />
+          <div class="invalid-feedback">Please enter your address.</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password *</label>
+          <input type="password" class="form-control" id="password" required minlength="6" />
+          <div class="invalid-feedback">Password must be at least 6 characters.</div>
+        </div>
+        <button type="submit" class="btn btn-warning w-100">Sign Up</button>
+      </form>
+    </section>
+<img src="{{ url_for('static', filename='images/bracelet_gold.jpg') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<model-viewer src="{{ url_for('static', filename='assets/3d/sample_jewel.glb') }}">
+
+    <!-- Interactive 3D Viewer Section -->
+    <section class="mb-5">
+      <h2 class="text-center mb-4">Interactive 3D Viewer</h2>
+      <div id="viewer"></div>
+    </section>
+  </main>
+
+  <footer class="py-4 border-top border-secondary text-center text-secondary">
+    &copy; 2025 Jewelry Technology. All rights reserved.
+  </footer>
+
+  <script>
+    // Virtual Try-On: Access user's camera and overlay jewelry
+    const video = document.getElementById('videoElement');
+    const overlay = document.getElementById('overlay-jewelry');
+    const jewelrySelect = document.getElementById('jewelry-select');
+
+    jewelrySelect.addEventListener('change', e => {
+      overlay.src = e.target.value;
+    });
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
+        .then(stream => {
+          video.srcObject = stream;
+          video.play();
+        })
+        .catch(() => {
+          alert('Unable to access camera for virtual try-on.');
+        });
+    } else {
+      alert('Camera API not supported in this browser.');
+    }
+
+    // Generate QR codes for jewelry purchase links
+    const qrData = [
+      {id: 'qrcode1', url: 'https://yourstore.com/purchase?item=gold_diamond_necklace'},
+      {id: 'qrcode2', url: 'https://yourstore.com/purchase?item=classic_pearl_strand'},
+      {id: 'qrcode3', url: 'https://yourstore.com/purchase?item=gold_bangle_bracelet'},
+      {id: 'qrcode4', url: 'https://yourstore.com/purchase?item=diamond_tennis_bracelet'}
+    ];
+    qrData.forEach(({id, url}) => {
+      QRCode.toCanvas(document.getElementById(id), url, { width: 128, height: 128 });
+    });
+
+    // Existing Three.js 3D Viewer for sample jewel
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x1e1e1e);
+
+    const camera = new THREE.PerspectiveCamera(75, 600 / 400, 0.1, 1000);
+    camera.position.z = 3;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(600, 400);
+    document.getElementById('viewer').appendChild(renderer.domElement);
+
+    const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+    scene.add(light);
+
+    const loader = new THREE.GLTFLoader();
+    loader.load('/static/assets/3d/sample_jewel.glb', function (gltf) {
+      gltf.scene.scale.set(1.2, 1.2, 1.2);
+      scene.add(gltf.scene);
+    }, undefined, function (error) {
+      console.error('Error loading model:', error);
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      scene.rotation.y += 0.003;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<model-viewer src="/static/assets/3d/necklace.glb" 
+              ar 
+              ar-modes="webxr scene-viewer quick-look" 
+              camera-controls 
+              auto-rotate 
+              style="width: 100%; height: 400px;">
+</model-viewer>
+    // Signup form validation and mock submit
+    const form = document.getElementById('signup-form');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.classList.add('was-validated');
+        return;
+      }
+      alert(`Thank you for signing up, ${form.firstName.value}!`);
+      form.reset();
+      form.classList.remove('was-validated');
+      // TODO: Connect to backend API to securely save user info
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
